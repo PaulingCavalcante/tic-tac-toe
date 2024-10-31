@@ -30,28 +30,37 @@ function Game() {
     setShowToast(false); // Fecha o toast ao voltar para um movimento anterior
   }
 
-  const moves = history.map((_, move) => (
-    <li key={move}>
-      <button onClick={() => jumpTo(move)}>
-        {move ? `Go to move #${move}` : 'Go to game start'}
-      </button>
-    </li>
-  ));
+  function resetGame() {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+    setShowToast(false); // Esconde o toast ao reiniciar o jogo
+  }
+
+  // const moves = history.map((_, move) => (
+  //   <li key={move}>
+  //     <button onClick={() => jumpTo(move)}>
+  //       {move ? `Go to move #${move}` : 'Go to game start'}
+  //     </button>
+  //   </li>
+  // ));
 
   return (
     <div className="game">
       <div className="game-board">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      {/* <div className="game-info">
-        <ol>{moves}</ol>
-      </div> */}
-      
+      <div className="game-info">
+        {/* <ol>{moves}</ol> */}
+        <button onClick={resetGame} className="reset-button">
+          Reiniciar Jogo
+        </button>
+      </div>
+
       <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1 }}>
         <Toast
           show={showToast}
           onClose={() => setShowToast(false)}
-          delay={3000}
+          delay={5000}
           autohide
           bg="dark"
         >
