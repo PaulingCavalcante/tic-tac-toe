@@ -7,25 +7,28 @@ function Board({ xIsNext, squares, onPlay }) {
     if (calculateWinner(squares) || squares[i]) return;
 
     const nextSquares = squares.slice();
-    nextSquares[i] = xIsNext ? 'X' : 'O'; // Mantemos 'X' e 'O' para o controle do estado
+    nextSquares[i] = xIsNext ? 'X' : 'O';
     onPlay(nextSquares);
   }
 
   const winner = calculateWinner(squares);
+  const isDraw = squares.every(square => square !== null); // Verifica se todos os quadrados estão preenchidos
+
   const status = winner ? (
     <>
-    Ganhador: {winner === 'X' ? <i className="bi bi-xbox" style={{ fontSize: '2rem' }}></i> : <i className="bi bi-playstation" style={{ fontSize: '2rem' }}></i>}
+      Ganhador: {winner === 'X' ? <i className="bi bi-xbox" style={{ fontSize: '2rem' }}></i> : <i className="bi bi-playstation" style={{ fontSize: '2rem' }}></i>}
     </>
+  ) : isDraw ? (
+    "O jogo terminou em velha!"
   ) : (
     `Próximo jogador: ${xIsNext ? 'Xbox' : 'PlayStation'}`
   );
 
-
   const renderIcon = (value) => {
     if (value === 'X') {
-      return <i className="bi bi-xbox" style={{ fontSize: '2rem' }}></i>; // Ícone do Xbox
+      return <i className="bi bi-xbox" style={{ fontSize: '2rem' }}></i>;
     } else if (value === 'O') {
-      return <i className="bi bi-playstation" style={{ fontSize: '2rem' }}></i>; // Ícone do PlayStation
+      return <i className="bi bi-playstation" style={{ fontSize: '2rem' }}></i>;
     }
     return null;
   };
