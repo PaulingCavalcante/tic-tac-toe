@@ -10,7 +10,7 @@ function Game() {
   const [currentMove, setCurrentMove] = useState(0);
   const [showWinnerToast, setShowWinnerToast] = useState(false);
   const [showDrawToast, setShowDrawToast] = useState(false);
-  
+
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
   const winner = calculateWinner(currentSquares);
@@ -49,7 +49,7 @@ function Game() {
           Reiniciar Jogo
         </button>
       </div>
-      
+
       {/* Toast Container para exibir vencedor ou empate */}
       <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1 }}>
         <Toast
@@ -64,10 +64,10 @@ function Game() {
             <small className="text-muted">agora mesmo</small>
           </Toast.Header>
           <Toast.Body className="text-white">
-            Parabéns! {winner} é o vencedor!
+          Parabéns! {winner === 'X' ? <i className="bi bi-xbox" style={{ fontSize: '2rem' }}></i> : <i className="bi bi-playstation" style={{ fontSize: '2rem' }}></i>} é o vencedor!
           </Toast.Body>
         </Toast>
-        
+
         <Toast
           show={showDrawToast}
           onClose={() => setShowDrawToast(false)}
