@@ -1,4 +1,3 @@
-// src/components/Game.jsx
 import React, { useState, useEffect } from 'react';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';

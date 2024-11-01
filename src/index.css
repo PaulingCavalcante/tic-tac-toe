@@ -1,12 +1,8 @@
 :root {
   --bg-color: #121212;
-  /* Fundo bem escuro */
   --text-color: #e0e0e0;
-  /* Cor do texto clara */
   --square-bg: #333;
-  /* Fundo dos quadrados do jogo */
   --square-border: #666;
-  /* Borda dos quadrados */
 }
 
 * {
@@ -24,7 +20,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* Altura total da tela */
 }
 
 h1,
@@ -64,14 +59,10 @@ h6 {
   background: var(--square-bg);
   float: left;
   font-size: 2rem;
-  /* Aumenta o tamanho do texto no quadrado */
   font-weight: bold;
   line-height: 80px;
-  /* Centraliza verticalmente */
   height: 18svh;
-  /* Tamanho do quadrado */
   width: 10svw;
-  /* Largura do quadrado */
   text-align: center;
   color: var(--text-color);
   border-radius: 5px;
@@ -96,7 +87,6 @@ h6 {
 .status {
   margin-bottom: 20px;
   font-size: 24px;
-  /* Aumenta o status para acompanhar o tamanho dos quadrados */
 }
 
 .game-container {
@@ -111,11 +101,9 @@ h6 {
   flex-direction: column;
   align-items: center;
   background-color: #1e1e1e;
-  /* Fundo levemente mais claro para destacar o jogo */
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  /* Adiciona uma sombra ao contêiner */
   height: 100%;
   width: 100%;
 }

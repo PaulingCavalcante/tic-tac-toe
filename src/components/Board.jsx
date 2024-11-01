@@ -1,4 +1,3 @@
-// src/components/Board.jsx
 import React from 'react';
 import Square from './Square';
 import calculateWinner from '../utils/calculateWinner';
@@ -28,7 +27,7 @@ function Board({ xIsNext, squares, onPlay }) {
     } else if (value === 'O') {
       return <i className="bi bi-playstation" style={{ fontSize: '2rem' }}></i>; // Ícone do PlayStation
     }
-    return null; // Retorna null se não houver valor
+    return null;
   };
 
   return (
