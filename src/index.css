@@ -1,8 +1,12 @@
 :root {
-  --bg-color: #121212; /* Fundo bem escuro */
-  --text-color: #e0e0e0; /* Cor do texto clara */
-  --square-bg: #333; /* Fundo dos quadrados do jogo */
-  --square-border: #666; /* Borda dos quadrados */
+  --bg-color: #121212;
+  /* Fundo bem escuro */
+  --text-color: #e0e0e0;
+  /* Cor do texto clara */
+  --square-bg: #333;
+  /* Fundo dos quadrados do jogo */
+  --square-border: #666;
+  /* Borda dos quadrados */
 }
 
 * {
@@ -19,31 +23,60 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Altura total da tela */
+  height: 100vh;
+  /* Altura total da tela */
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
 }
 
-h1 { font-size: 22px; }
-h2 { font-size: 20px; }
-h3 { font-size: 18px; }
-h4 { font-size: 16px; }
-h5 { font-size: 14px; }
-h6 { font-size: 12px; }
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 12px;
+}
 
 .square {
   background: var(--square-bg);
-  border: 2px solid var(--square-border); /* Borda mais grossa para destaque */
   float: left;
-  font-size: 48px; /* Aumenta o tamanho do texto no quadrado */
+  font-size: 2rem;
+  /* Aumenta o tamanho do texto no quadrado */
   font-weight: bold;
-  line-height: 80px; /* Centraliza verticalmente */
-  height: 80px; /* Tamanho do quadrado */
-  width: 80px; /* Largura do quadrado */
+  line-height: 80px;
+  /* Centraliza verticalmente */
+  height: 18svh;
+  /* Tamanho do quadrado */
+  width: 10svw;
+  /* Largura do quadrado */
   text-align: center;
   color: var(--text-color);
+  border-radius: 5px;
+  margin: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .board-row:after {
@@ -55,7 +88,8 @@ h6 { font-size: 12px; }
 
 .status {
   margin-bottom: 20px;
-  font-size: 24px; /* Aumenta o status para acompanhar o tamanho dos quadrados */
+  font-size: 24px;
+  /* Aumenta o status para acompanhar o tamanho dos quadrados */
 }
 
 .game-container {
@@ -69,10 +103,14 @@ h6 { font-size: 12px; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #1e1e1e; /* Fundo levemente mais claro para destacar o jogo */
+  background-color: #1e1e1e;
+  /* Fundo levemente mais claro para destacar o jogo */
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra ao contêiner */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  /* Adiciona uma sombra ao contêiner */
+  height: 100%;
+  width: 100%;
 }
 
 .game-info {
@@ -93,4 +131,8 @@ h6 { font-size: 12px; }
 
 .reset-button:hover {
   background-color: #555;
+}
+
+i{
+  font-size: 24px;
 }

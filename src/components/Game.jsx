@@ -8,16 +8,23 @@ import calculateWinner from '../utils/calculateWinner';
 function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
-  const [showToast, setShowToast] = useState(false);
+  const [showWinnerToast, setShowWinnerToast] = useState(false);
+  const [showDrawToast, setShowDrawToast] = useState(false);
+  
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
   const winner = calculateWinner(currentSquares);
 
+  const isDraw = !winner && currentSquares.every(square => square !== null);
+
   useEffect(() => {
     if (winner) {
-      setShowToast(true);
+      setShowWinnerToast(true);
+      setShowDrawToast(false);
+    } else if (isDraw) {
+      setShowDrawToast(true);
     }
-  }, [winner]);
+  }, [winner, isDraw]);
 
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -25,24 +32,12 @@ function Game() {
     setCurrentMove(nextHistory.length - 1);
   }
 
-  function jumpTo(move) {
-    setCurrentMove(move);
-    setShowToast(false); // Fecha o toast ao voltar para um movimento anterior
-  }
-
   function resetGame() {
     setHistory([Array(9).fill(null)]);
     setCurrentMove(0);
-    setShowToast(false); // Esconde o toast ao reiniciar o jogo
+    setShowWinnerToast(false);
+    setShowDrawToast(false);
   }
-
-  // const moves = history.map((_, move) => (
-  //   <li key={move}>
-  //     <button onClick={() => jumpTo(move)}>
-  //       {move ? `Go to move #${move}` : 'Go to game start'}
-  //     </button>
-  //   </li>
-  // ));
 
   return (
     <div className="game">
@@ -50,27 +45,42 @@ function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        {/* <ol>{moves}</ol> */}
         <button onClick={resetGame} className="reset-button">
           Reiniciar Jogo
         </button>
       </div>
-
+      
+      {/* Toast Container para exibir vencedor ou empate */}
       <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1 }}>
         <Toast
-          show={showToast}
-          onClose={() => setShowToast(false)}
-          delay={5000}
+          show={showWinnerToast}
+          onClose={() => setShowWinnerToast(false)}
+          delay={3000}
           autohide
           bg="dark"
         >
-          <Toast.Header closeButton={false} className='bg-dark text-white'>
-            <img src="" className="rounded me-2" alt="" />
-            <strong className="me-auto text-white">Game Over</strong>
-            <small className="text-muted">just now</small>
+          <Toast.Header closeButton={false}>
+            <strong className="me-auto text-black">Jogo Encerrado</strong>
+            <small className="text-muted">agora mesmo</small>
           </Toast.Header>
           <Toast.Body className="text-white">
-            Congratulations! {winner} is the winner!
+            Parabéns! {winner} é o vencedor!
+          </Toast.Body>
+        </Toast>
+        
+        <Toast
+          show={showDrawToast}
+          onClose={() => setShowDrawToast(false)}
+          delay={3000}
+          autohide
+          bg="dark"
+        >
+          <Toast.Header closeButton={false}>
+            <strong className="me-auto text-black">Jogo Encerrado</strong>
+            <small className="text-muted">agora mesmo</small>
+          </Toast.Header>
+          <Toast.Body className="text-white">
+            Deu velha! Tente novamente.
           </Toast.Body>
         </Toast>
       </ToastContainer>

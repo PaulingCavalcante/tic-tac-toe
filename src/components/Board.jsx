@@ -13,7 +13,7 @@ function Board({ xIsNext, squares, onPlay }) {
   }
 
   const winner = calculateWinner(squares);
-  const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
+  const status = winner ? `Ganhador: ${winner}` : `Próximo jogador: ${xIsNext ? 'X' : 'O'}`;
 
   return (
     <>
