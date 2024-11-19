@@ -36,8 +36,7 @@
     <li>Após ter o node previamente instalado, abra o terminal</li>
     <li>Navegue até a pasta do projeto.</li>
     <li>Execute o arquivo principal:</li>
-    <pre><code>npm install -D vite</code></pre>
-    <pre><code>npm install react-bootstrap bootstrap</code></pre>
+    <pre><code>npm install</code></pre>
     <pre><code>nmp run dev</code></pre>
 </ol>
 
